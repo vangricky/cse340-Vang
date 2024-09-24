@@ -1,8 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gruppo&family=Satisfy&display=swap");
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+  /* padding: 0;
+  margin: 0; */
 }
 
 /* Styles */
+
+/* Global Styles */
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  font-family: gruppo;
+}
+
+h1,
+h3 {
+  font-family: gruppo;
+}
+
+/* Styles */
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-title-header {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.login-link {
+  font-size: larger;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 12px;
+  margin: 0;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.nav-list a {
+  color: white;
+}
+
+/* index.ejs */
+
+.hero-image h1 {
+  text-align: center;
+}
+
+.delorean-vehicle {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.delorean-specs-box {
+  background-color: rgb(224, 224, 224);
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 0.5px;
+}
+
+.delorean-specs-box h3 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.delorean-specs-box li {
+  text-align: center;
+}
+
+.delorean-specs-box img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 190px;
+  margin-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* grid items */
+
+/* .grid-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+} */
+
+.delorean-upgrades-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.delorean-upgrades-grid h1 {
+  grid-column: span 2;
+  text-align: center;
+  color: white;
+}
+
+.delorean-upgrades-box {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1px;
+  margin: auto;
+  text-align: center;
+}
+
+.delorean-upgrades-box a {
+  color: white;
+}
+
+.delorean-upgrades-box img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.delorean-reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70px 1fr;
+}
+
+.delorean-reviews-grid h1 {
+  grid-column: span 2;
+  text-align: center;
+}
+
+.delorean-reviews-grid li {
+  font-size: 20px;
+  text-align: center;
+  padding: 1px;
+}
+
+.delorean-reviews-grid ul li {
+  font-family: satisfy, sans-serif;
+}
+
+/* Footer style */
+
+.copyright {
+  font-size: 12px;
+}
