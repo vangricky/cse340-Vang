@@ -1,3 +1,49 @@
 @media only screen and (min-width: 32em) {
-    
+  #top-header {
+    padding-bottom: 25px;
+  }
+
+  .space-between {
+    display: flex;
+    align-items: center;
+  }
+
+  .main-title-header {
+    font-size: 70px;
+  }
+
+  .login-link {
+    font-size: 28px;
+  }
+
+  .nav-list {
+    border-radius: 10px;
+  }
+
+  .hero-image h1 {
+    font-size: 55px;
+  }
+
+  .delorean-img-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 100px;
+  }
+
+  .delorean-vehicle {
+    width: 550px;
+  }
+
+  .delorean-specs-box {
+    width: 310px;
+    margin: 25px;
+  }
+
+  .delorean-upgrades-grid h1 {
+    font-size: 50px;
+  }
+
+  .delorean-reviews-grid h1 {
+    font-size: 30px;
+  }
 }
