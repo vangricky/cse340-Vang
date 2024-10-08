@@ -10,6 +10,7 @@ const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
+const { Pool } = require('pg');
 
 /* ***********************
  * Routes
@@ -24,6 +25,25 @@ app.use(static)
 app.get("/", function(req, res){
   res.render("index", {title: "Home"})
 })
+
+app.get('/db/test', (req,res) => {
+  const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS,
+    port: process.env.DB_PORT,
+    ssl: false
+  });
+
+  pool.query('SELECT * FROM inventory', (err, res) => {
+    if (err) {
+      res.send(`Error: ${err}`);
+    } else {
+      res.send(`<pre>${JSON.stringify(queryRes.rows, null, 4)}</pre>`)
+    }
+  });
+});
 
 /* ***********************
  * Local Server Information
