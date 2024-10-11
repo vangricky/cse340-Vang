@@ -11,6 +11,7 @@ const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
 const { Pool } = require('pg');
+const baseController = require("./controllers/baseController")
 
 /* ***********************
  * Routes
@@ -22,9 +23,11 @@ app.set('layout', './layouts/layout');
 app.use(static)
 
 //Index Route
-app.get("/", function(req, res){
-  res.render("index", {title: "Home"})
-})
+// app.get("/", function(req, res){
+//   res.render("index", {title: "Home"})
+// })
+
+app.get('/', baseController.buildHome)
 
 app.get('/db/test', (req,res) => {
   const pool = new Pool({
