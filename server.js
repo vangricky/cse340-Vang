@@ -11,7 +11,9 @@ const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
 const { Pool } = require('pg');
-const baseController = require("./controllers/baseController")
+const baseController = require("./controllers/baseController");
+const inventoryRoute = require("./routes/inventoryRoute");
+const utilities = require("./utilities/index.js")
 
 /* ***********************
  * Routes
@@ -22,12 +24,26 @@ app.use(expressLayouts);
 app.set('layout', './layouts/layout');
 app.use(static)
 
+//Inventory Routes
+app.use("/inv", inventoryRoute)
+
 //Index Route
 // app.get("/", function(req, res){
 //   res.render("index", {title: "Home"})
 // })
 
 app.get('/', baseController.buildHome)
+
+// File Not Found Route - must be last route in list
+app.use(async (req, res, next) => {
+    next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+})
+
+//Route Parameter Example Below
+app.get('/test/:hello/:world/:goodbye', (req,res) => {
+  const { hello, world, goodbye } = req.params;
+  res.send(`Hello ${hello} ${world} ${goodbye}`)
+})
 
 app.get('/db/test', (req,res) => {
   const pool = new Pool({
@@ -45,6 +61,20 @@ app.get('/db/test', (req,res) => {
     } else {
       res.send(`<pre>${JSON.stringify(queryRes.rows, null, 4)}</pre>`)
     }
+  });
+});
+
+/************************
+* Express Error Handler
+* Place after all other middleware
+*************************/
+app.use(async (err, req, res, next) => {
+  let nav = await utilities.getNav()
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  res.render("errors/error", {
+      title: err.status || 'Server Error',
+      message: err.message,
+      nav
   });
 });
 
