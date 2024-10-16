@@ -1,4 +1,12 @@
 @media only screen and (min-width: 32em) {
+  .errorcode {
+    text-align: center;
+  }
+
+  .errorcode h1 {
+    font-size: 100px;
+  }
+
   #top-header {
     padding-bottom: 25px;
   }
