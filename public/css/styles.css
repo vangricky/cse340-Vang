@@ -193,6 +193,11 @@ h3 {
 
 #inv-display a {
   color: white;
+  text-align: center;
+}
+
+#inv-display h1 {
+  text-align: center;
 }
 
 #inv-display li {
