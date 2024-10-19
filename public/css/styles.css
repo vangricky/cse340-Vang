@@ -182,3 +182,40 @@ h3 {
 .copyright {
   font-size: 12px;
 }
+
+/* Car Displays */
+
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#inv-display a {
+  color: white;
+}
+
+#inv-display li {
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border-radius: 10px;
+  padding: 25px 25px;
+  margin: 30px 30px;
+  color: white;
+  transition: 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+#inv-display li:hover {
+  transform: scale(1.1);
+}
+
+#inv-display img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
