@@ -71,7 +71,7 @@ Util.buildVehicleDetailHTML = function (vehicle) {
   html += `<p><strong>Model:</strong> ${vehicle.inv_model}</p>`;
   html += `<p><strong>Year:</strong> ${vehicle.inv_year}</p>`;
   html += `<p><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</p>`;
-  html += `<p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(vehicle.inv_mileage)} miles</p>`;
+  html += `<p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)} miles</p>`;
   html += `<p><strong>Description:</strong> ${vehicle.inv_description}</p>`;
   html += `</div>`;
   
