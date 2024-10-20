@@ -58,6 +58,27 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* ***************************
+ *  Build HTML for specific vehicle detail
+ * ************************** */
+Util.buildVehicleDetailHTML = function (vehicle) {
+  if (!vehicle) return "<p>Vehicle not found.</p>";
+  
+  let html = `<h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>`;
+  html += `<img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" />`;
+  html += `<div>`;
+  html += `<p><strong>Make:</strong> ${vehicle.inv_make}</p>`;
+  html += `<p><strong>Model:</strong> ${vehicle.inv_model}</p>`;
+  html += `<p><strong>Year:</strong> ${vehicle.inv_year}</p>`;
+  html += `<p><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</p>`;
+  html += `<p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(vehicle.inv_mileage)} miles</p>`;
+  html += `<p><strong>Description:</strong> ${vehicle.inv_description}</p>`;
+  html += `</div>`;
+  
+  return html;
+};
+
+
 
 
 /*****************************************
