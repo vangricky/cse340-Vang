@@ -64,9 +64,9 @@ Util.buildClassificationGrid = async function(data){
 Util.buildVehicleDetailHTML = function (vehicle) {
   if (!vehicle) return "<p>Vehicle not found.</p>";
   
-  let html = `<h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>`;
-  html += `<img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" />`;
-  html += `<div>`;
+  let html = `<h1 class="vehicle-name">${vehicle.inv_make} ${vehicle.inv_model}</h1>`;
+  html += `<img class="details-img" src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" />`;
+  html += `<div class="details">`;
   html += `<p><strong>Make:</strong> ${vehicle.inv_make}</p>`;
   html += `<p><strong>Model:</strong> ${vehicle.inv_model}</p>`;
   html += `<p><strong>Year:</strong> ${vehicle.inv_year}</p>`;

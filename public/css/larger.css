@@ -55,4 +55,8 @@
   .delorean-reviews-grid h1 {
     font-size: 30px;
   }
+
+  .details-img {
+    width: 500px;
+  }
 }
