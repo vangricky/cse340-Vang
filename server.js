@@ -49,46 +49,19 @@ app.use(expressLayouts);
 app.set('layout', './layouts/layout');
 app.use(static)
 
-//Inventory Routes
+app.get("/", utilities.handleErrors(baseController.buildHome));
+//Inventory Route
 app.use("/inv", inventoryRoute)
 
-//Index Route
-// app.get("/", function(req, res){
-//   res.render("index", {title: "Home"})
-// })
+//Account Routes
 
-// app.get('/', baseController.buildHome)
-app.get("/", utilities.handleErrors(baseController.buildHome));
+
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
     next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
 
-//Route Parameter Example Below
-app.get('/test/:hello/:world/:goodbye', (req,res) => {
-  const { hello, world, goodbye } = req.params;
-  res.send(`Hello ${hello} ${world} ${goodbye}`)
-})
-
-app.get('/db/test', (req,res) => {
-  const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASS,
-    port: process.env.DB_PORT,
-    ssl: false
-  });
-
-  pool.query('SELECT * FROM inventory', (err, res) => {
-    if (err) {
-      res.send(`Error: ${err}`);
-    } else {
-      res.send(`<pre>${JSON.stringify(queryRes.rows, null, 4)}</pre>`)
-    }
-  });
-});
 
 /************************
 * Express Error Handler

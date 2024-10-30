@@ -4,7 +4,7 @@ require('dotenv').config();
 /**
 * Instead of connecting to your pool with all the individual settings you can
 * simplify the connection by using a connection string. Add this string to your
-* .env file and us it here;we called ours `DB_URL`:
+* .env file and use it here;we called ours `DB_URL`:
 * 
 * postgresql://username:password@host:port/database
 * 
