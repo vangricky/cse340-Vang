@@ -59,4 +59,17 @@
   .details-img {
     width: 500px;
   }
+
+  .login-form-placement {
+    width: 500px;
+    margin: auto;
+  }
+
+  .login-submit-button {
+    padding-top: 13px;
+  }
+
+  .sign-up-account {
+    padding-bottom: 160px;
+  }
 }

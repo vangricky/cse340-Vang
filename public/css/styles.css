@@ -57,7 +57,7 @@ h3 {
   text-align: center;
   border-radius: 10px;
   padding: 12px;
-  /* margin: 0; */
+  margin-top: 10px;
   background: rgb(131, 58, 180);
   background: linear-gradient(
     90deg,
@@ -65,10 +65,13 @@ h3 {
     rgba(253, 29, 29, 1) 0%,
     rgba(252, 176, 69, 1) 100%
   );
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 .nav-list a {
   color: white;
+  text-shadow: 2px 0px 2px rgba(0, 0, 0, 0.44);
 }
 
 /* index.ejs */
@@ -253,4 +256,54 @@ h3 {
 
 .vehicle-name {
   text-align: center;
+}
+
+/* Account Login Page */
+.login-header {
+  text-align: center;
+  padding-bottom: 25px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.login-form-placement {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.login-labels {
+  padding-bottom: 6px;
+}
+
+.login-inputs {
+  padding: 16px;
+}
+
+.login-submit-button {
+  text-align: center;
+}
+
+.login-button {
+  padding: 19px;
+  width: 230px;
+  font-size: 19px;
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  color: white;
+  border-radius: 4px;
+  border: none;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  text-shadow: 2px 0px 2px rgba(0, 0, 0, 0.44);
+}
+
+.sign-up-account {
+  text-align: center;
+  font-size: 14px;
+  padding-bottom: 110px;
 }

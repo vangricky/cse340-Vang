@@ -1,8 +1,8 @@
 const express = require("express")
 const router = new express.Router()
-const accController = require("../controllers/accController")
-const util = require("../utilities")
+const accountController = require("../controllers/accountController")
+const utilities = require("../utilities")
 
-router.get("/login", accController)
+router.get("/login", utilities.handleErrors(accountController.buildLogin))
 
 module.exports = router;
