@@ -78,7 +78,7 @@ app.use(async (err, req, res, next) => {
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
   let message = err.status == 404 ? err.message : "Oh no! There was a crash. Maybe try a different route?";
   res.render("errors/error", {
-      title: err.status || 'Server Error',
+      title: err.status || `Server Error, 505 to be exact, buddy.`,
       message,
       nav
   });
