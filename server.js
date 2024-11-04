@@ -14,6 +14,7 @@ const { Pool } = require('pg');
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute")
+const registerRoute = require("./routes/registerRoute")
 const utilities = require("./utilities/index.js")
 const session = require("express-session")
 const pool = require('./database/')
@@ -54,8 +55,10 @@ app.use(static)
 app.get("/", utilities.handleErrors(baseController.buildHome));
 //Inventory Route
 app.use("/inv", inventoryRoute)
-//Account Routes
+//Account Route
 app.use("/account", accountRoute)
+//Register Route
+app.use("/register", registerRoute)
 
 
 // File Not Found Route - must be last route in list

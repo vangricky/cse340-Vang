@@ -78,6 +78,10 @@ Util.buildVehicleDetailHTML = function (vehicle) {
   return html;
 };
 
+// Util.buildLoginForm = function(req, res, next) {
+//   let loginForm = ``
+// }
+
 
 
 
