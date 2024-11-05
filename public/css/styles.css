@@ -341,3 +341,18 @@ h3 {
   display: inline-block;
   color: #575050;
 }
+
+.password-pattern-text {
+  color: #b4b4b4;
+  font-style: italic;
+}
+
+input:required:invalid {
+  border-color: red;
+  border-radius: 2px;
+}
+
+input:required:valid {
+  border-color: green;
+  border-radius: 2px;
+}
