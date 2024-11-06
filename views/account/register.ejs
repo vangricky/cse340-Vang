@@ -1,44 +1,57 @@
-<%- messages() %>
+<%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
 <div>
   <h1 class="login-header">Register</h1>
 </div>
 
 <form action="/account/register" method="post" class="login-form">
   <div class="login-form-placement">
-    <label class="login-labels" for="first">First Name</label>
+    <label class="login-labels" for="account_firstname">First Name</label>
     <input
       class="login-inputs"
       name="account_firstname"
+      id="account_firstname"
       placeholder="Samwise"
       type="text"
+      value="<%= locals.account_firstname %>"
       required
     />
   </div>
 
   <div class="login-form-placement">
-    <label class="login-labels" for="first">Last Name</label>
+    <label class="login-labels" for="account_lastname">Last Name</label>
     <input
       class="login-inputs"
       name="account_lastname"
+      id="account_lastname"
       placeholder="Gamgee"
       type="text"
+      value="<%= locals.account_lastname %>"
       required
     />
   </div>
 
   <div class="email-section login-form-placement">
-    <label class="login-labels" for="email">Email</label>
+    <label class="login-labels" for="account_email">Email</label>
     <input
       class="login-inputs"
       name="account_email"
+      id="account_email"
       type="email"
       placeholder="emailname@byui.edu"
+      value="<%= locals.account_email %>"
       required
     />
   </div>
 
   <div class="password-section login-form-placement">
-    <label class="login-labels" for="password">Password</label>
+    <label class="login-labels" for="account_password">Password</label>
     <div>
       <p class="password-pattern-text">
         There must be at least 12 characters, one must be a number, one must be
