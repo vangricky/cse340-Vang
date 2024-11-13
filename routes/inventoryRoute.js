@@ -10,5 +10,6 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to get a specific vehicle's details by inventory ID
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildVehicleDetail));
 
+router.get("/management", utilities.handleErrors(invController.buildManagementView))
 
 module.exports = router;

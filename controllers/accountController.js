@@ -108,6 +108,9 @@ async function accountLogin(req, res) {
        res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
      }
    return res.redirect("/account/accounts") //changes the url link when hitting login
+   } else {
+    res.redirect('/account/login') //gives a flash message to the user if password is wrong, or email.
+    req.flash("notice", "Email or Password was incorrect. Check credentials and please try again.")
    }
   } catch (error) {
    return new Error('Access Forbidden')

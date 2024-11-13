@@ -16,6 +16,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     title: className + " vehicles",
     nav,
     grid,
+    errors: null
   })
 }
 
@@ -27,13 +28,23 @@ invCont.buildVehicleDetail = async function (req, res, next) {
   const vehicleData = await invModel.getVehicleById(inventoryId); 
   const htmlContent = await utilities.buildVehicleDetailHTML(vehicleData);
   let nav = await utilities.getNav();
-  
   res.render("./inventory/detail", {
     title: `${vehicleData.inv_make} ${vehicleData.inv_model}`,
     nav,
     htmlContent,
+    errors: null
   });
 };
+
+invCont.buildManagementView = async function (req, res, next) {
+  const nav = await utilities.getNav()
+  req.flash("notice", "Welcome to the Inventory Manager.")
+  res.render("./inventory/management", {
+    title: `Inventory Management`,
+    nav,
+    errors: null
+  })
+}
 
 
 
