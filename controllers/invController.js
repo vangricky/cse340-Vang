@@ -46,6 +46,16 @@ invCont.buildManagementView = async function (req, res, next) {
   })
 }
 
+invCont.buildAddClassificationView = async function (req, res, next) {
+  const nav = await utilities.getNav()
+  req.flash("notice", "Add A Classification");
+  res.render("./inventory/add-classification", {
+    title: `Add Classification`,
+    nav,
+    errors: null
+  })
+}
+
 
 
 module.exports = invCont;

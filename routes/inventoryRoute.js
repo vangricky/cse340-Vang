@@ -12,4 +12,6 @@ router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildVeh
 
 router.get("/management", utilities.handleErrors(invController.buildManagementView))
 
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView))
+
 module.exports = router;
