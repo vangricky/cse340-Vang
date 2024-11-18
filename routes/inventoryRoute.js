@@ -14,4 +14,7 @@ router.get("/management", utilities.handleErrors(invController.buildManagementVi
 
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView))
 
+//add classification post req
+router.post("/add-classification",)
+
 module.exports = router;
