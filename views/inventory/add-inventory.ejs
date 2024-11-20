@@ -1,0 +1,15 @@
+<%- messages() %>
+
+<h1>Add New Inventory</h1>
+
+<form class="add-inv-form" method="post" action="/inv/add-inventory">
+  <label for="invMake">Vehicle Make</label>
+  <input type="text" id="invMake" name="invMake" />
+  <label for="invModel">Vehicle Model</label>
+  <input type="text" id="invModel" name="invModel" />
+  <label for="invYear">Vehicle Year</label>
+  <input type="text" id="invYear" name="invYear" />
+  <label for="invDesc">Vehicle Description</label>
+  <input type="text" id="invDesc" name="invDesc" />
+  <input type="submit" value="Submit" />
+</form>

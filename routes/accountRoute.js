@@ -9,7 +9,7 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 //register view page
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 //account management view, after logging in.
-router.get("/accounts",utilities.checkLogin, utilities.handleErrors(accountController.buildManager))
+router.get("/accounts", utilities.checkLogin, utilities.handleErrors(accountController.buildManager))
 
 //register post req
 router.post("/register",

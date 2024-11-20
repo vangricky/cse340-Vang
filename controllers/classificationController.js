@@ -14,14 +14,14 @@ async function addClassification(req, res) {
       "notice",
       `Classification: ${classification}, successfully inserted.`
     );
-    res.status(201).render("./inventory/add-classification", {
+    res.status(201).render("inventory/add-classification", {
       title: "Add Classification",
       nav,
       errors: null,
     });
   } else {
     req.flash("notice", "Failed to insert classification, please try again.");
-    res.status(501).render("./inventory/add-classification", {
+    res.status(501).render("inventory/add-classification", {
       title: "Add Classification",
       nav,
       errors: null,

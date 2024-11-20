@@ -40,6 +40,15 @@ async function getVehicleById(inventoryId) {
   }
 }
 
+async function addNewInventory(invMake, invModel, invYear, invDesc) {
+  try {
+    const sql = "INSERT INTO inventory (inv_make, inv_model, inv_year, inv_description) VALUES ($1, $2, $3, $4) RETURNING *"
+    return await pool.query(sql, [invMake, invModel, invYear, invDesc])
+  } catch (error) {
+    return error.message
+  }
+}
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addNewInventory}
