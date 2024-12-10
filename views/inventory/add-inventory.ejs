@@ -4,14 +4,7 @@
 
 <form class="add-inv-form" method="post" action="/inv/add-inventory">
   <label for="classification_id">Classification</label>
-  <select name="classification_id" id="classification_id" required>
-    <option value="">Choose a Classification</option>
-    <option value="1">Custom</option>
-    <option value="2">Sport</option>
-    <option value="3">SUV</option>
-    <option value="4">Truck</option>
-    <option value="5">Sedan</option>
-  </select>
+  <%- classificationDropdown %>
 
   <label for="inv_make">Vehicle Make</label>
   <input

@@ -99,33 +99,27 @@ Util.buildClassificationList = async function (classification_id = null) {
   return classificationList
 }
 
-Util.buildClassificationList = async function (classification_id = null) {
-  // Static classification list placeholder
-  const classifications = [
-    { classification_id: 1, classification_name: "Custom" },
-    { classification_id: 2, classification_name: "Sport" },
-    { classification_id: 3, classification_name: "SUV" },
-    { classification_id: 4, classification_name: "Truck" },
-    { classification_id: 5, classification_name: "Sedan" },
-  ];
-
-  // Build dropdown menu
-  let classificationList =
-    '<select name="classification_id" id="classificationList" required>';
-  classificationList += "<option value=''>Choose a Classification</option>";
-  classifications.forEach((row) => {
-    classificationList += `<option value="${row.classification_id}"`;
-    if (
-      classification_id != null &&
-      row.classification_id == classification_id
-    ) {
-      classificationList += " selected";
-    }
-    classificationList += `>${row.classification_name}</option>`;
-  });
-  classificationList += "</select>";
-  return classificationList;
+Util.buildClassificationList = async function (selectedClassification = null) {
+  try {
+    const data = await invModel.getClassifications(); // Fetch classifications
+    let classificationList =
+      '<select name="classification_id" id="classificationList" required>';
+    classificationList += "<option value=''>Choose a Classification</option>";
+    data.rows.forEach((row) => {
+      classificationList += `<option value="${row.classification_id}"`;
+      if (selectedClassification && row.classification_id === selectedClassification) {
+        classificationList += " selected";
+      }
+      classificationList += `>${row.classification_name}</option>`;
+    });
+    classificationList += "</select>";
+    return classificationList;
+  } catch (error) {
+    console.error("Error building classification list:", error.message);
+    throw error;
+  }
 };
+
 
 
 /* ****************************************

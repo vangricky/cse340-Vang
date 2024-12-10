@@ -38,6 +38,7 @@ invCont.buildVehicleDetail = async function (req, res, next) {
 
 invCont.buildManagementView = async function (req, res, next) {
   const nav = await utilities.getNav()
+  
   req.flash("notice", "Welcome to the Inventory Manager.")
   res.render("./inventory/management", {
     title: `Inventory Management`,
@@ -57,33 +58,23 @@ invCont.buildAddClassificationView = async function (req, res, next) {
 }
 
 invCont.buildAddInventoryView = async function (req, res, next) {
-  const nav = await utilities.getNav();
-  req.flash("notice", "Add An Inventory");
-  res.render("./inventory/add-inventory", {
-    title: `Add Inventory`,
-    nav,
-    errors: null
-  })
-}
+  try {
+    const nav = await utilities.getNav(); // Navigation
+    const classificationDropdown = await utilities.buildClassificationList(); // Fetch and build the dropdown
+    res.render("./inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationDropdown, // Pass the dropdown to the view
+      errors: null,
+    });
+  } catch (error) {
+    console.error("Error loading add-inventory view:", error.message); // Log the error
+    req.flash("error", "Unable to load the page. Please try again.");
+    res.redirect("/error");
+  }
+};
 
 
-// Adding Inventory 
-// invCont.buildAddInventoryView = async function (req, res, next) {
-//   try {
-//     const nav = await utilities.getNav(); // Navigation
-//     const classificationDropdown = await utilities.buildClassificationList(); // Static dropdown
-//     res.render("./inventory/add-inventory", {
-//       title: "Add Inventory",
-//       nav,
-//       classificationDropdown,
-//       errors: null,
-//     });
-//   } catch (error) {
-//     console.error("Error loading add-inventory view:", error.message); // Log the error
-//     req.flash("error", "Unable to load the page. Please try again.");
-//     res.redirect("/error");
-//   }
-// };
 
 invCont.addInventory = async function (req, res, next) {
   const {
