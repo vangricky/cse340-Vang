@@ -1,13 +1,14 @@
 <%- messages() %>
 
-<h1>Add New Inventory</h1>
+<h1 class="login-header">Add New Inventory</h1>
 
-<form class="add-inv-form" method="post" action="/inv/add-inventory">
-  <label for="classification_id">Classification</label>
+<form class="login-form-placement" method="post" action="/inv/add-inventory">
+  <label class="login-labels" for="classification_id">Classification</label>
   <%- classificationDropdown %>
 
-  <label for="inv_make">Vehicle Make</label>
+  <label class="login-labels" for="inv_make">Vehicle Make</label>
   <input
+    class="login-inputs"
     type="text"
     id="inv_make"
     name="inv_make"
@@ -15,12 +16,19 @@
     required
   />
 
-  <label for="inv_model">Vehicle Model</label>
-  <input type="text" id="inv_model"" name="inv_model" value="<%= typeof invModel
-  !== 'undefined' ? invModel : '' %>" required />
-
-  <label for="inv_year">Vehicle Year</label>
+  <label class="login-labels" for="inv_model">Vehicle Model</label>
   <input
+    class="login-inputs"
+    type="text"
+    id="inv_model"
+    name="inv_model"
+    value="<%= typeof invModel !== 'undefined' ? invModel : '' %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_year">Vehicle Year</label>
+  <input
+    class="login-inputs"
     type="number"
     id="inv_year"
     name="inv_year"
@@ -28,13 +36,19 @@
     required
   />
 
-  <label for="inv_description">Vehicle Description</label>
-  <textarea id="inv_description" name="inv_description" required>
+  <label class="login-labels" for="inv_description">Vehicle Description</label>
+  <textarea
+    class="login-inputs"
+    id="inv_description"
+    name="inv_description"
+    required
+  >
 <%= typeof invDesc !== 'undefined' ? invDesc : '' %></textarea
   >
 
-  <label for="inv_image">Vehicle Image Path</label>
+  <label class="login-labels" for="inv_image">Vehicle Image Path</label>
   <input
+    class="login-inputs"
     type="text"
     id="inv_image"
     name="inv_image"
@@ -42,8 +56,9 @@
     required
   />
 
-  <label for="inv_thumbnail">Vehicle Thumbnail Path</label>
+  <label class="login-labels" for="inv_thumbnail">Vehicle Thumbnail Path</label>
   <input
+    class="login-inputs"
     type="text"
     id="inv_thumbnail"
     name="inv_thumbnail"
@@ -51,8 +66,9 @@
     required
   />
 
-  <label for="inv_price">Vehicle Price</label>
+  <label class="login-labels" for="inv_price">Vehicle Price</label>
   <input
+    class="login-inputs"
     type="number"
     id="inv_price"
     name="inv_price"
@@ -61,8 +77,9 @@
     required
   />
 
-  <label for="inv_miles">Vehicle Miles</label>
+  <label class="login-labels" for="inv_miles">Vehicle Miles</label>
   <input
+    class="login-inputs"
     type="number"
     id="inv_miles"
     name="inv_miles"
@@ -70,8 +87,9 @@
     required
   />
 
-  <label for="inv_color">Vehicle Color</label>
+  <label class="login-labels" for="inv_color">Vehicle Color</label>
   <input
+    class="login-inputs"
     type="text"
     id="inv_color"
     name="inv_color"
@@ -79,5 +97,7 @@
     required
   />
 
-  <input type="submit" value="Submit" />
+  <div class="login-submit-button">
+    <input class="login-button" type="submit" value="Submit" />
+  </div>
 </form>

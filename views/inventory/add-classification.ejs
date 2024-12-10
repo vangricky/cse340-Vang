@@ -1,12 +1,22 @@
 <%- messages() %>
-<h1>Add New Classification</h1>
+
+<h1 class="login-header">Add New Classification</h1>
 
 <form
-  class="add-class-form"
+  class="login-form-placement"
   method="post"
   action="/inv/add-classification"
 >
-  <label for="classification">Classification Name</label>
-  <input type="text" id="classification" name="classification" value="Slow" />
-  <input type="submit" value="Submit" />
+  <label class="login-labels" for="classification">Classification Name</label>
+  <input
+    class="login-inputs"
+    type="text"
+    id="classification"
+    name="classification"
+    value="Slow"
+    required
+  />
+  <div class="login-submit-button">
+    <input class="login-button" type="submit" value="Submit" />
+  </div>
 </form>

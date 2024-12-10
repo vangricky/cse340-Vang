@@ -72,4 +72,30 @@
   .sign-up-account {
     padding-bottom: 160px;
   }
+
+  #inventoryDisplay {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+
+  #inventoryDisplay th,
+  #inventoryDisplay td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  #inventoryDisplay th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  #inventoryDisplay tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  #inventoryDisplay tr:hover {
+    background-color: #f1f1f1;
+  }
 }

@@ -7,9 +7,16 @@ const utilities = require("../utilities/index.js");
 const classValidate = require("../utilities/classification-validation")
 
 //Route to build inventory by classification view
+router.get("/", utilities.handleErrors(invController.buildManagementView))
+
 router.get(
   "/type/:classificationId",
   utilities.handleErrors(invController.buildByClassificationId)
+);
+
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
 );
 
 // Route to get a specific vehicle's details by inventory ID
@@ -18,10 +25,10 @@ router.get(
   utilities.handleErrors(invController.buildVehicleDetail)
 );
 
-router.get(
-  "/management",
-  utilities.handleErrors(invController.buildManagementView)
-);
+// router.get(
+//   "/management",
+//   utilities.handleErrors(invController.buildManagementView)
+// );
 
 router.get(
   "/add-classification",

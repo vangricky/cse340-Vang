@@ -1,5 +1,35 @@
-<title>Inventory Management</title>
-<h1 class="inventory-title-header">Inventory Management</h1>
+<%- messages() %>
 
-<a href="/inv/add-classification">Add New Classification</a>
-<a href="/inv/add-inventory">Add New Inventory</a>
+<h1 class="login-header">Inventory Management</h1>
+
+<div class="login-form-placement">
+  <!-- Links to add a classification or vehicle -->
+  <p class="login-labels">
+    <a href="/inv/add-classification">Add New Classification</a>
+  </p>
+  <p class="login-labels"><a href="/inv/add-inventory">Add New Vehicle</a></p>
+
+  <!-- Heading to manage inventory -->
+  <h2 class="login-labels">Manage Inventory</h2>
+
+  <!-- Instruction paragraph -->
+  <p class="login-labels">
+    Select a classification from the list to see the items belonging to the
+    classification.
+  </p>
+
+  <!-- Display classification select list -->
+  <div class="login-inputs"><%- classificationSelect %></div>
+
+  <!-- Empty table for inventory items -->
+  <div class="inventory-table-container">
+    <table id="inventoryDisplay"></table>
+  </div>
+
+  <!-- Message if JavaScript is disabled -->
+  <noscript class="login-labels"
+    >JavaScript must be enabled to use this page.</noscript
+  >
+</div>
+
+<script src="/js/inventory.js" defer></script>

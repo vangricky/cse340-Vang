@@ -356,3 +356,10 @@ input:required:valid {
   border-color: green;
   border-radius: 2px;
 }
+
+select.login-inputs {
+  padding: 10px; /* Adjust for consistent spacing */
+  border-radius: 5px; /* Match other inputs' rounded corners */
+  font-size: 1rem; /* Consistent font size */
+  width: 100%; /* Ensure it spans the same width as other inputs */
+}

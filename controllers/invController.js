@@ -38,11 +38,12 @@ invCont.buildVehicleDetail = async function (req, res, next) {
 
 invCont.buildManagementView = async function (req, res, next) {
   const nav = await utilities.getNav()
-  
+  const classificationSelect = await utilities.buildClassificationList()
   req.flash("notice", "Welcome to the Inventory Manager.")
   res.render("./inventory/management", {
     title: `Inventory Management`,
     nav,
+    classificationSelect,
     errors: null
   })
 }
@@ -131,6 +132,28 @@ invCont.addInventory = async function (req, res, next) {
   console.log("Submitted form data:", req.body);
 
 };
+
+
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  try {
+    const classification_id = parseInt(req.params.classification_id); // Parse classification_id to an integer
+    const invData = await invModel.getInventoryByClassificationId(classification_id); // Fetch data from the model
+    if (invData.length > 0 && invData[0].inv_id) {
+      return res.json(invData); // Return inventory data as JSON
+    } else {
+      next(new Error("No data returned")); // Throw an error if no data is found
+    }
+  } catch (error) {
+    console.error("Error fetching inventory as JSON:", error.message);
+    res.status(500).json({ message: "Internal Server Error. Please try again later." });
+  }
+};
+
+
 
 
 
