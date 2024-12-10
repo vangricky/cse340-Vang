@@ -1,0 +1,113 @@
+<%- messages() %>
+
+<h1 class="login-header">Edit Vehicle</h1>
+
+<form
+  id="updateForm"
+  class="login-form-placement"
+  method="post"
+  action="/inv/update"
+>
+  <label class="login-labels" for="classification_id">Classification</label>
+  <%- classificationSelect %>
+
+  <label class="login-labels" for="inv_make">Vehicle Make</label>
+  <input
+    class="login-inputs"
+    type="text"
+    id="inv_make"
+    name="inv_make"
+    value="<%= inv_make %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_model">Vehicle Model</label>
+  <input
+    class="login-inputs"
+    type="text"
+    id="inv_model"
+    name="inv_model"
+    value="<%= inv_model %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_year">Vehicle Year</label>
+  <input
+    class="login-inputs"
+    type="number"
+    id="inv_year"
+    name="inv_year"
+    value="<%= inv_year %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_description">Vehicle Description</label>
+  <textarea
+    class="login-inputs"
+    id="inv_description"
+    name="inv_description"
+    required
+  >
+<%= inv_description %></textarea
+  >
+
+  <label class="login-labels" for="inv_image">Vehicle Image Path</label>
+  <input
+    class="login-inputs"
+    type="text"
+    id="inv_image"
+    name="inv_image"
+    value="<%= inv_image %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_thumbnail">Vehicle Thumbnail Path</label>
+  <input
+    class="login-inputs"
+    type="text"
+    id="inv_thumbnail"
+    name="inv_thumbnail"
+    value="<%= inv_thumbnail %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_price">Vehicle Price</label>
+  <input
+    class="login-inputs"
+    type="number"
+    id="inv_price"
+    name="inv_price"
+    step="0.01"
+    value="<%= inv_price %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_miles">Vehicle Miles</label>
+  <input
+    class="login-inputs"
+    type="number"
+    id="inv_miles"
+    name="inv_miles"
+    value="<%= inv_miles %>"
+    required
+  />
+
+  <label class="login-labels" for="inv_color">Vehicle Color</label>
+  <input
+    class="login-inputs"
+    type="text"
+    id="inv_color"
+    name="inv_color"
+    value="<%= inv_color %>"
+    required
+  />
+
+  <!-- Hidden input for inventory ID -->
+  <input type="hidden" name="inv_id" value="<%= inv_id %>" />
+
+  <div class="login-submit-button">
+    <button class="login-button" type="submit" disabled>Update Vehicle</button>
+  </div>
+</form>
+
+<script src="/js/inv-update.js" defer></script>

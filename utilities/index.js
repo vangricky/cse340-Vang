@@ -2,6 +2,8 @@ const invModel = require("../models/inventory-model")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const Util = {}
+const inventoryValidation = require("./inventory-validation");
+
 
 /* ************************
  * Constructs the nav HTML unordered list
@@ -148,4 +150,7 @@ Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)
   }
  }
 
-module.exports = Util
+ module.exports = {
+  ...Util,
+  inventoryValidation,
+};
