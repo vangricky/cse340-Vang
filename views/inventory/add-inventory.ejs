@@ -3,13 +3,88 @@
 <h1>Add New Inventory</h1>
 
 <form class="add-inv-form" method="post" action="/inv/add-inventory">
-  <label for="invMake">Vehicle Make</label>
-  <input type="text" id="invMake" name="invMake" />
-  <label for="invModel">Vehicle Model</label>
-  <input type="text" id="invModel" name="invModel" />
-  <label for="invYear">Vehicle Year</label>
-  <input type="text" id="invYear" name="invYear" />
-  <label for="invDesc">Vehicle Description</label>
-  <input type="text" id="invDesc" name="invDesc" />
+  <label for="classification_id">Classification</label>
+  <select name="classification_id" id="classification_id" required>
+    <option value="">Choose a Classification</option>
+    <option value="1">Custom</option>
+    <option value="2">Sport</option>
+    <option value="3">SUV</option>
+    <option value="4">Truck</option>
+    <option value="5">Sedan</option>
+  </select>
+
+  <label for="inv_make">Vehicle Make</label>
+  <input
+    type="text"
+    id="inv_make"
+    name="inv_make"
+    value="<%= typeof invMake !== 'undefined' ? invMake : '' %>"
+    required
+  />
+
+  <label for="inv_model">Vehicle Model</label>
+  <input type="text" id="inv_model"" name="inv_model" value="<%= typeof invModel
+  !== 'undefined' ? invModel : '' %>" required />
+
+  <label for="inv_year">Vehicle Year</label>
+  <input
+    type="number"
+    id="inv_year"
+    name="inv_year"
+    value="<%= typeof invYear !== 'undefined' ? invYear : '' %>"
+    required
+  />
+
+  <label for="inv_description">Vehicle Description</label>
+  <textarea id="inv_description" name="inv_description" required>
+<%= typeof invDesc !== 'undefined' ? invDesc : '' %></textarea
+  >
+
+  <label for="inv_image">Vehicle Image Path</label>
+  <input
+    type="text"
+    id="inv_image"
+    name="inv_image"
+    value="/images/no-image.png"
+    required
+  />
+
+  <label for="inv_thumbnail">Vehicle Thumbnail Path</label>
+  <input
+    type="text"
+    id="inv_thumbnail"
+    name="inv_thumbnail"
+    value="/images/no-image-thumb.png"
+    required
+  />
+
+  <label for="inv_price">Vehicle Price</label>
+  <input
+    type="number"
+    id="inv_price"
+    name="inv_price"
+    step="0.01"
+    value="<%= typeof invPrice !== 'undefined' ? invPrice : '' %>"
+    required
+  />
+
+  <label for="inv_miles">Vehicle Miles</label>
+  <input
+    type="number"
+    id="inv_miles"
+    name="inv_miles"
+    value="<%= typeof invMiles !== 'undefined' ? invMiles : '' %>"
+    required
+  />
+
+  <label for="inv_color">Vehicle Color</label>
+  <input
+    type="text"
+    id="inv_color"
+    name="inv_color"
+    value="<%= typeof invColor !== 'undefined' ? invColor : '' %>"
+    required
+  />
+
   <input type="submit" value="Submit" />
 </form>

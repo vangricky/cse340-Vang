@@ -67,5 +67,83 @@ invCont.buildAddInventoryView = async function (req, res, next) {
 }
 
 
+// Adding Inventory 
+// invCont.buildAddInventoryView = async function (req, res, next) {
+//   try {
+//     const nav = await utilities.getNav(); // Navigation
+//     const classificationDropdown = await utilities.buildClassificationList(); // Static dropdown
+//     res.render("./inventory/add-inventory", {
+//       title: "Add Inventory",
+//       nav,
+//       classificationDropdown,
+//       errors: null,
+//     });
+//   } catch (error) {
+//     console.error("Error loading add-inventory view:", error.message); // Log the error
+//     req.flash("error", "Unable to load the page. Please try again.");
+//     res.redirect("/error");
+//   }
+// };
+
+invCont.addInventory = async function (req, res, next) {
+  const {
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
+
+  try {
+    const newInventory = await invModel.addNewInventory(
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id
+    );
+    if (newInventory) {
+      req.flash("notice", "The new inventory item was successfully added.");
+      return res.redirect("/inv/add-inventory");
+    }
+  } catch (error) {
+    console.error("Error adding inventory item:", error.message);
+    const nav = await utilities.getNav();
+    const classificationDropdown = await utilities.buildClassificationList(classification_id);
+    req.flash("error", "Failed to add the inventory item. Please try again.");
+    return res.render("./inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationDropdown,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      errors: error.message,
+    });
+  }
+  console.log("Submitted form data:", req.body);
+
+};
+
+
+
+
+
 
 module.exports = invCont;
