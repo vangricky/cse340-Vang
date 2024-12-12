@@ -2,15 +2,45 @@
   <div class="space-between">
     <div>
       <span class="siteName">
-        <a href="/" class="main-title-header" title="Return to home page"
-          >CSE Motors</a
-        >
+        <a href="/" class="main-title-header" title="Return to home page">
+          CSE Motors
+        </a>
       </span>
     </div>
     <div id="tools">
-      <a href="/account/login" class="login-link" title="Click to log in"
-        >My Account</a
-      >
+      <% if (locals.loggedin) { %>
+      <div class="welcome-container">
+        <span class="welcome-link">
+          Welcome, <%= locals.accountData.account_firstname %>
+        </span>
+        <a href="/account/logout" class="logout-link" title="Click to log out">
+          Logout
+        </a>
+      </div>
+      <% } else { %>
+      <a href="/account/login" class="login-link" title="Click to log in">
+        My Account
+      </a>
+      <% } %>
     </div>
   </div>
 </header>
+
+<style>
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text and button to the left */
+    gap: 5px; /* Add spacing between the message and the button */
+  }
+  .logout-link {
+    margin-top: 5px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .logout-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
+</style>

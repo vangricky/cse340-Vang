@@ -1,15 +1,21 @@
-//Needed Resources
+// Needed Resources
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
 const classificationController = require("../controllers/classificationController");
 const utilities = require("../utilities/index.js");
-const classValidate = require("../utilities/classification-validation")
+const classValidate = require("../utilities/classification-validation");
 const inventoryValidation = require("../utilities/inventory-validation"); // Import validation
 
+// Middleware to check admin access
+const checkAdminAccess = utilities.checkAdminAccess;
 
-//Route to build inventory by classification view
-router.get("/", utilities.handleErrors(invController.buildManagementView))
+// Route to build inventory by classification view
+router.get(
+  "/",
+  checkAdminAccess,
+  utilities.handleErrors(invController.buildManagementView)
+);
 
 router.get(
   "/type/:classificationId",
@@ -27,55 +33,63 @@ router.get(
   utilities.handleErrors(invController.buildVehicleDetail)
 );
 
-// router.get(
-//   "/management",
-//   utilities.handleErrors(invController.buildManagementView)
-// );
-
 router.get(
   "/add-classification",
+  checkAdminAccess,
   utilities.handleErrors(invController.buildAddClassificationView)
 );
 
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventoryView))
+router.get(
+  "/add-inventory",
+  checkAdminAccess,
+  utilities.handleErrors(invController.buildAddInventoryView)
+);
 
-//add classification post req
+// Add classification POST request
 router.post(
-  "/add-classification", classValidate.classificationRules(), classValidate.checkClassificationData,
+  "/add-classification",
+  checkAdminAccess,
+  classValidate.classificationRules(),
+  classValidate.checkClassificationData,
   utilities.handleErrors(classificationController.addClassification)
 );
 
 router.post(
   "/add-inventory",
-  utilities.handleErrors(invController.addInventory) 
+  checkAdminAccess,
+  inventoryValidation.newInventoryRules(),
+  utilities.handleErrors(inventoryValidation.checkInventoryData),
+  utilities.handleErrors(invController.addInventory)
 );
 
 // Route to edit inventory item by ID
 router.get(
   "/edit/:inv_id",
+  checkAdminAccess,
   utilities.handleErrors(invController.editInventoryView)
 );
 
 // Route to handle inventory updates
 router.post(
   "/update",
-  inventoryValidation.newInventoryRules(), // Apply validation rules
-  utilities.handleErrors(inventoryValidation.checkUpdateData), // Validate data
-  utilities.handleErrors(invController.updateInventory) // Update inventory
+  checkAdminAccess,
+  inventoryValidation.newInventoryRules(),
+  utilities.handleErrors(inventoryValidation.checkUpdateData),
+  utilities.handleErrors(invController.updateInventory)
 );
 
 // Route to render the delete confirmation view
 router.get(
   "/delete/:inv_id",
+  checkAdminAccess,
   utilities.handleErrors(invController.deleteConfirmationView)
 );
 
 // Route to handle the deletion of an inventory item
 router.post(
   "/delete",
+  checkAdminAccess,
   utilities.handleErrors(invController.deleteInventoryItem)
 );
-
-
 
 module.exports = router;
