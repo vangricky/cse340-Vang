@@ -7,18 +7,37 @@ const invCont = {}
  *  Build inventory by classification view
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
-  const classification_id = req.params.classificationId
-  const data = await invModel.getInventoryByClassificationId(classification_id)
-  const grid = await utilities.buildClassificationGrid(data)
-  let nav = await utilities.getNav()
-  const className = data[0].classification_name
-  res.render("./inventory/classification", {
-    title: className + " vehicles",
-    nav,
-    grid,
-    errors: null
-  })
-}
+  const classification_id = req.params.classificationId;
+  try {
+    const data = await invModel.getInventoryByClassificationId(classification_id);
+    let nav = await utilities.getNav();
+
+    // Check if data is empty
+    if (!data || data.length === 0) {
+      req.flash("notice", "Sorry, no vehicles available at this time.");
+      return res.render("./inventory/classification", {
+        title: "Vehicle Inventory",
+        nav,
+        grid: null,
+        errors: null,
+      });
+    }
+
+    const grid = await utilities.buildClassificationGrid(data);
+    const className = data[0].classification_name;
+    res.render("./inventory/classification", {
+      title: className + " vehicles",
+      nav,
+      grid,
+      errors: null,
+    });
+  } catch (error) {
+    console.error("Error building inventory by classification ID:", error.message);
+    req.flash("error", "Unable to load the inventory. Please try again later.");
+    res.redirect("/");
+  }
+};
+
 
 /* ***************************
  *  Build vehicle detail view
