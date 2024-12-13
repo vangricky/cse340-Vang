@@ -1,4 +1,4 @@
-// Needed Resources
+// inventoryRoute.js - Fixed inventoryValidation.checkInventoryData Error
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
@@ -50,16 +50,16 @@ router.post(
   "/add-classification",
   checkAdminAccess,
   classValidate.classificationRules(),
-  classValidate.checkClassificationData,
+  utilities.handleErrors(classValidate.checkClassificationData),
   utilities.handleErrors(classificationController.addClassification)
 );
 
 router.post(
   "/add-inventory",
   checkAdminAccess,
-  inventoryValidation.newInventoryRules(),
-  utilities.handleErrors(inventoryValidation.checkInventoryData),
-  utilities.handleErrors(invController.addInventory)
+  inventoryValidation.newInventoryRules(), // Ensure this returns an array of rules
+  utilities.handleErrors((req, res, next) => inventoryValidation.checkUpdateData(req, res, next)), // Use checkUpdateData for consistency
+  utilities.handleErrors((req, res, next) => invController.addInventory(req, res, next)) // Wrap with handleErrors
 );
 
 // Route to edit inventory item by ID
@@ -74,8 +74,8 @@ router.post(
   "/update",
   checkAdminAccess,
   inventoryValidation.newInventoryRules(),
-  utilities.handleErrors(inventoryValidation.checkUpdateData),
-  utilities.handleErrors(invController.updateInventory)
+  utilities.handleErrors((req, res, next) => inventoryValidation.checkUpdateData(req, res, next)),
+  utilities.handleErrors((req, res, next) => invController.updateInventory(req, res, next))
 );
 
 // Route to render the delete confirmation view
