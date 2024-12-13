@@ -19,6 +19,7 @@ const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const reviewRoute = require("./routes/reviewRoutes");
 
 
 /* ***********************
@@ -65,6 +66,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 //Account Route (login, register)
 app.use("/account", accountRoute);
+
+app.use("/reviews", reviewRoute);
 
 
 

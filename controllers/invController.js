@@ -41,19 +41,33 @@ invCont.buildByClassificationId = async function (req, res, next) {
 /* ***************************
  *  Build vehicle detail view
  * ************************** */
+const reviewModel = require("../models/review-model");
+
 invCont.buildVehicleDetail = async function (req, res, next) {
   try {
-    const inventoryId = req.params.inventoryId;
-    const vehicleData = await invModel.getVehicleById(inventoryId);
+    const inv_id = req.params.inventoryId; // Ensure this matches the route parameter
+    console.log("Fetching details for inv_id:", inv_id);
+
+    // Fetch vehicle details
+    const vehicleData = await invModel.getVehicleById(inv_id);
+
+    // Fetch associated reviews
+    const reviews = await reviewModel.getReviewsByInventoryId(inv_id);
+
     if (!vehicleData) {
       throw new Error("Vehicle not found");
     }
+
     const htmlContent = await utilities.buildVehicleDetailHTML(vehicleData);
     let nav = await utilities.getNav();
+
+    // Pass vehicleData to the EJS template
     res.render("./inventory/detail", {
       title: `${vehicleData.inv_make} ${vehicleData.inv_model}`,
       nav,
       htmlContent,
+      reviews,
+      vehicleData, // Include vehicleData here
       errors: null,
     });
   } catch (error) {
@@ -62,6 +76,8 @@ invCont.buildVehicleDetail = async function (req, res, next) {
     res.redirect("/");
   }
 };
+
+
 
 invCont.buildManagementView = async function (req, res, next) {
   try {
