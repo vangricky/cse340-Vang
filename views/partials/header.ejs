@@ -16,6 +16,13 @@
         <a href="/account/logout" class="logout-link" title="Click to log out">
           Logout
         </a>
+        <a
+          href="/account/accounts"
+          class="inventory-link"
+          title="Go to inventory management"
+        >
+          <button class="inventory-button">Account Management</button>
+        </a>
       </div>
       <% } else { %>
       <a href="/account/login" class="login-link" title="Click to log in">
@@ -42,5 +49,18 @@
   .logout-link:hover {
     text-decoration: underline;
     color: #0056b3;
+  }
+  .inventory-button {
+    margin-top: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  .inventory-button:hover {
+    background-color: #218838;
   }
 </style>

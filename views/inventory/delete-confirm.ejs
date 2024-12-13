@@ -1,45 +1,131 @@
 <%- messages() %>
 
-<h1>Delete <%= inv_make %> <%= inv_model %></h1>
-<p>Confirm Deletion - This action is permanent and cannot be undone.</p>
+<div class="delete-container">
+  <h1 class="delete-title">Delete <%= inv_make %> <%= inv_model %></h1>
+  <p class="delete-warning">
+    Confirm Deletion - This action is permanent and cannot be undone.
+  </p>
 
-<form action="/inv/delete" method="post">
-  <label for="inv_make">Make</label>
-  <input
-    type="text"
-    id="inv_make"
-    name="inv_make"
-    value="<%= inv_make %>"
-    readonly
-  />
+  <form action="/inv/delete" method="post" class="delete-form">
+    <div class="form-group">
+      <label for="inv_make" class="form-label">Make</label>
+      <input
+        type="text"
+        id="inv_make"
+        name="inv_make"
+        value="<%= inv_make %>"
+        readonly
+        class="form-input"
+      />
+    </div>
 
-  <label for="inv_model">Model</label>
-  <input
-    type="text"
-    id="inv_model"
-    name="inv_model"
-    value="<%= inv_model %>"
-    readonly
-  />
+    <div class="form-group">
+      <label for="inv_model" class="form-label">Model</label>
+      <input
+        type="text"
+        id="inv_model"
+        name="inv_model"
+        value="<%= inv_model %>"
+        readonly
+        class="form-input"
+      />
+    </div>
 
-  <label for="inv_year">Year</label>
-  <input
-    type="text"
-    id="inv_year"
-    name="inv_year"
-    value="<%= inv_year %>"
-    readonly
-  />
+    <div class="form-group">
+      <label for="inv_year" class="form-label">Year</label>
+      <input
+        type="text"
+        id="inv_year"
+        name="inv_year"
+        value="<%= inv_year %>"
+        readonly
+        class="form-input"
+      />
+    </div>
 
-  <label for="inv_price">Price</label>
-  <input
-    type="text"
-    id="inv_price"
-    name="inv_price"
-    value="<%= inv_price %>"
-    readonly
-  />
+    <div class="form-group">
+      <label for="inv_price" class="form-label">Price</label>
+      <input
+        type="text"
+        id="inv_price"
+        name="inv_price"
+        value="<%= inv_price %>"
+        readonly
+        class="form-input"
+      />
+    </div>
 
-  <input type="hidden" name="inv_id" value="<%= inv_id %>" />
-  <button type="submit">Delete</button>
-</form>
+    <input type="hidden" name="inv_id" value="<%= inv_id %>" />
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+  </form>
+</div>
+
+<style>
+  .delete-container {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .delete-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .delete-warning {
+    color: #d9534f;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .delete-form .form-group {
+    margin-bottom: 15px;
+  }
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #555;
+  }
+  .form-input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
+  .form-actions {
+    text-align: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-danger {
+    background-color: #d9534f;
+    color: #fff;
+  }
+  .btn-danger:hover {
+    background-color: #c9302c;
+  }
+</style>
