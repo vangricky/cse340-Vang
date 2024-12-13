@@ -2,6 +2,7 @@
  * This server.js file is the primary file of the 
  * application. It is used to control the project.
  *******************************************/
+
 /* ***********************
  * Require Statements
  *************************/
@@ -66,7 +67,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 //Account Route (login, register)
 app.use("/account", accountRoute);
-
+//Review Route
 app.use("/reviews", reviewRoute);
 
 

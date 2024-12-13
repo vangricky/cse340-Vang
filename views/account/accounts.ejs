@@ -1,25 +1,32 @@
 <%- messages() %>
 
-<h1>Account Management</h1>
+<div class="account-management">
+  <h1 class="page-title">Account Management</h1>
 
-<!-- Greet the user -->
-<h2>Welcome <%= locals.accountData.firstname %></h2>
+  <!-- Greet the user -->
+  <h2 class="greeting">Welcome, <%= locals.accountData.firstname %></h2>
 
-<!-- Update Account Information Link -->
-<p>
-  <a
-    href="/account/update/<%= locals.accountData.account_id %>"
-    title="Update your account information"
-  >
-    Update Account Information
-  </a>
-</p>
+  <!-- Update Account Information Link -->
+  <p class="update-account">
+    <a
+      href="/account/update/<%= locals.accountData.account_id %>"
+      class="action-link"
+      title="Update your account information"
+    >
+      Update Account Information
+    </a>
+  </p>
 
-<!-- Conditional Inventory Management Section -->
-<% if (locals.accountData.account_type === "Employee" ||
-locals.accountData.account_type === "Admin") { %>
-<h3>Inventory Management</h3>
-<p>
-  <a href="/inv" title="Go to Inventory Management">Manage Inventory</a>
-</p>
-<% } %>
+  <!-- Conditional Inventory Management Section -->
+  <% if (locals.accountData.account_type === "Employee" ||
+  locals.accountData.account_type === "Admin") { %>
+  <div class="inventory-management">
+    <h3 class="section-title">Inventory Management</h3>
+    <p>
+      <a href="/inv" class="action-link" title="Go to Inventory Management">
+        Manage Inventory
+      </a>
+    </p>
+  </div>
+  <% } %>
+</div>
